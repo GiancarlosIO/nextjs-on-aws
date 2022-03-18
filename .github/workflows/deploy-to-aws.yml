@@ -22,9 +22,11 @@ jobs:
         with:
           node-version: 14
 
-      - name: 🛠 Install serverless
+      - name: 🛠 Install dependencies
         # temporary fix https://github.com/serverless-nextjs/serverless-next.js/issues/2320#issuecomment-1030586723
-        run: npm install -g serverless@2.72.2
+        run: |
+          npm install -g serverless@2.72.2
+          npm install
 
       - name: 🚀 Production Deploy
         run: npm run deploy
