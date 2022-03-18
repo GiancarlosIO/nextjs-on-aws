@@ -1,8 +1,10 @@
 name: 🚀 Deploy
+
 on:
   push:
     branches:
       - main
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'push' && github.head_ref || github.ref }}
   cancel-in-progress: true
@@ -21,7 +23,8 @@ jobs:
           node-version: 14
 
       - name: 🛠 Install serverless
-        run: npm install -g serverless
+        # temporary fix https://github.com/serverless-nextjs/serverless-next.js/issues/2320#issuecomment-1030586723
+        run: npm install -g serverless@2.72.2
 
       - name: 🚀 Production Deploy
         run: npm run deploy
