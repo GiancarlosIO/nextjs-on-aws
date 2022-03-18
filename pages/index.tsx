@@ -69,4 +69,12 @@ const Home: NextPage = () => {
   )
 }
 
+export const getServerSideProps = () => {
+  return {
+    props: {
+      hi: true
+    }
+  }
+}
+
 export default Home
